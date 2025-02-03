@@ -17,7 +17,13 @@ import LivingRoomPng from "./assets/section-2/living-room.png";
 import DiningPng from "./assets/section-2/dining.png";
 import Footer from "./components/Footer";
 import Products from "./components/Product";
-import { Carousel } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { ChevronRight } from "lucide-react";
 
 const Section2Items = [
@@ -215,27 +221,36 @@ export default function Home() {
         >
           <div className="relative flex gap-4 overflow-x-auto scrollbar-hide">
             {rooms.map((room) => (
-              <div key={room.id} className="relative">
-                <Image
-                  src={room.image}
-                  alt={room.title}
-                  width={500}
-                  height={500}
-                  className="rounded-lg"
-                />
-                <div className="absolute bottom-4 left-4 bg-white p-3 rounded-md shadow-lg flex items-center justify-between w-[90%]">
-                  <div>
-                    <p className="text-xs text-gray-500">{`0${room.id} — ${room.category}`}</p>
-                    <p className="font-bold">{room.title}</p>
-                  </div>
-                  <Button className="bg-[#AE8D57] text-white p-2 rounded-none hover:bg-[#8A6B40]">
-                    <ChevronRight size={18} />
-                  </Button>
-                </div>
-              </div>
+              <Carousel>
+                <CarouselContent>
+                  <CarouselItem>
+                    <div key={room.id} className="relative">
+                      <Image
+                        src={room.image}
+                        alt={room.title}
+                        width={500}
+                        height={500}
+                        className="rounded-lg"
+                      />
+                      <div className="absolute bottom-4 left-4 bg-white p-3 rounded-md shadow-lg flex items-center justify-between w-[90%]">
+                        <div>
+                          <p className="text-xs text-gray-500">{`0${room.id} — ${room.category}`}</p>
+                          <p className="font-bold">{room.title}</p>
+                        </div>
+                        <Button className="bg-[#AE8D57] text-white p-2 rounded-none hover:bg-[#8A6B40]">
+                          <ChevronRight size={18} />
+                        </Button>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
             ))}
           </div>
         </motion.div>
+      </section>
+      <section className="share py-16 text-center">
+
       </section>
       <Footer />
     </div>
