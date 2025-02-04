@@ -5,40 +5,58 @@ import FooterLg from "../assets/footer/footer-lg.svg";
 
 function Footer() {
   return (
-    <footer className="footer grid items-center ">
-      <div className="group-1 flex items-center justify-between">
-        <div className="group-1_logo">
-          <Image src={FooterLg} alt="logo" />
-          <p className="address">
-            400 University Drive Suite 200 Coral Gables, FL 33134 USA
+    <footer className="w-full border-t py-10 text-gray-800">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
+        {/* Logo and Address */}
+        <div>
+          <Image src={FooterLg} alt="Funiro Logo" width={100} height={40} />
+          <p className="mt-4 text-sm text-gray-600">
+            400 University Drive Suite 200 Coral Gables, <br /> FL 33134 USA
           </p>
         </div>
-        <div className="group-1-1 grid">
-          <h1 className="title">Links</h1>
-          <b>Home</b>
-          <b>Shop</b>
-          <b>About</b>
-          <b>Contact</b>
+
+        {/* Links */}
+        <div>
+          <h3 className="font-semibold mb-4">Links</h3>
+          <ul className="space-y-2">
+            <li><Link href="#">Home</Link></li>
+            <li><Link href="#">Shop</Link></li>
+            <li><Link href="#">About</Link></li>
+            <li><Link href="#">Contact</Link></li>
+          </ul>
         </div>
-        <div className="group-1-2 grid">
-          <h1 className="title">Help</h1>
-          <b>Payment Options</b>
-          <b>Reuturns</b>
-          <b>Privacy Policies</b>
+
+        {/* Help */}
+        <div>
+          <h3 className="font-semibold mb-4">Help</h3>
+          <ul className="space-y-2">
+            <li><Link href="#">Payment Options</Link></li>
+            <li><Link href="#">Returns</Link></li>
+            <li><Link href="#">Privacy Policies</Link></li>
+          </ul>
         </div>
-        <div className="group-1-3">
-          <h1 className="title">News Letter</h1>
-          <div className="email">
-            <input type="text" placeholder="Enter your email" />
-            <button>Subcribe</button>
+
+        {/* Newsletter */}
+        <div>
+          <h3 className="font-semibold mb-4">Newsletter</h3>
+          <div className="flex border-b border-gray-400 pb-2">
+            <input
+              type="email"
+              placeholder="Enter Your Email Address"
+              className="flex-1 bg-transparent outline-none text-sm"
+            />
+            <button className="ml-2 text-sm font-semibold">SUBSCRIBE</button>
           </div>
         </div>
       </div>
-      <div className="group-2 text-center">
-        <p>2023 furino. All rights reverved</p>
+
+      {/* Copyright */}
+      <div className="border-t mt-10 pt-4 text-left text-sm text-gray-500">
+        <p>2023 Funiro. All rights reserved</p>
       </div>
     </footer>
   );
 }
 
 export default Footer;
+

@@ -23,8 +23,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 import { ChevronRight } from "lucide-react";
+import HomeSharePng from "./assets/home-share/home-share.png";
 
 const Section2Items = [
   {
@@ -191,9 +192,9 @@ export default function Home() {
           <Products />
         </div>
       </section>
-      <section className="inspiration flex py-16 bg-[#FBF8F3]">
-        {/* Left */}
-        <div className="container mx-auto flex flex-col md:flex-row items-center gap-10">
+      <section className="inspiration flex px-40 py-20 bg-[#FBF8F3]">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-10">
+          {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -204,53 +205,56 @@ export default function Home() {
               50+ Beautiful rooms inspiration
             </h2>
             <p className="text-gray-600 mb-6">
-              Our designer already made a lot of beautiful prototype of rooms
-              that inspire you
+              Our designer already made a lot of beautiful prototypes of rooms
+              that inspire you.
             </p>
-            <Button className="bg-[#AE8D57] text-white px-6 py-3 rounded-md hover:bg-[#8A6B40]">
+            <Button className="bg-[#AE8D57] text-white px-6 py-3 rounded-lg hover:bg-[#8A6B40]">
               Explore More
             </Button>
           </motion.div>
-        </div>
-        {/* Right */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full md:w-1/2"
-        >
-          <div className="relative flex gap-4 overflow-x-auto scrollbar-hide">
-            {rooms.map((room) => (
-              <Carousel>
-                <CarouselContent>
-                  <CarouselItem>
-                    <div key={room.id} className="relative">
+
+          {/* Right - Fixed Carousel */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="w-full md:w-1/2 relative"
+          >
+            <Carousel>
+              <CarouselContent>
+                {rooms.map((room) => (
+                  <CarouselItem key={room.id}>
+                    <div className="relative">
                       <Image
                         src={room.image}
                         alt={room.title}
-                        width={500}
-                        height={500}
-                        className="rounded-lg"
+                        width={250}
+                        height={250}
+                        className=""
                       />
-                      <div className="absolute bottom-4 left-4 bg-white p-3 rounded-md shadow-lg flex items-center justify-between w-[90%]">
+                      {/* Card Overlay */}
+                      <div className="absolute p-5 bottom-4 left-4 bg-white shadow-lg opacity-80 flex items-center justify-between w-[23%]">
                         <div>
                           <p className="text-xs text-gray-500">{`0${room.id} — ${room.category}`}</p>
                           <p className="font-bold">{room.title}</p>
                         </div>
-                        <Button className="bg-[#AE8D57] text-white p-2 rounded-none hover:bg-[#8A6B40]">
+                        <Button className="bg-[#AE8D57] text-white p-2 rounded-md hover:bg-[#8A6B40]">
                           <ChevronRight size={18} />
                         </Button>
                       </div>
                     </div>
                   </CarouselItem>
-                </CarouselContent>
-              </Carousel>
-            ))}
-          </div>
-        </motion.div>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </motion.div>
+        </div>
       </section>
-      <section className="share py-16 text-center">
 
+      <section className="share py-16 text-center">
+        <p className="font-semibold text-[#616161]">Share your set with</p>
+        <h1 className="text-3xl font-bold">#FuniroFurniture</h1>
+        <Image src={HomeSharePng} alt="Home Share" className="w-full" />
       </section>
       <Footer />
     </div>
